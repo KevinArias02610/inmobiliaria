@@ -10,16 +10,16 @@
       <mat-card-title class="title">Inmobiliaria Areandina</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form class="login-form">
+      <form class="login-form" [formGroup]="formulario">
         <mat-form-field appearance="outline">
           <mat-label>Usuario</mat-label>
-          <input matInput type="text" placeholder="Ingrese su usuario">
+          <input matInput type="text"formControlName="usuario" placeholder="Ingrese su usuario">
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Contraseña</mat-label>
-          <input matInput type="password" placeholder="Ingrese su contraseña">
+          <input matInput type="password" formControlName="contrasena" placeholder="Ingrese su contraseña">
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="redirect()">Iniciar sesión</button>
+        <button type="submit" mat-raised-button color="primary" (click)="redirect()">Iniciar sesión</button>
       </form>
     </mat-card-content>
   </mat-card>

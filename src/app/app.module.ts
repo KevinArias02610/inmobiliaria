@@ -14,6 +14,11 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { ChildrenModule } from './components/children.module';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
+import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent],
@@ -36,7 +41,12 @@ import { MatDividerModule } from '@angular/material/divider';
     }),
     ChildrenModule,
     MatSelectModule,
-    MatDividerModule
+    MatDividerModule,
+    HttpClientModule,
+    MatIconModule,
+    MatTooltipModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

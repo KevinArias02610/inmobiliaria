@@ -8,23 +8,34 @@
 </nav>
 <div class="content">
   <div class="search-filters">
-    <input type="text" class="search-input" placeholder="Buscar...">
-    <mat-select class="filter-select" placeholder="Filtro 1">
-      <mat-option value="opcion1">Opción 1</mat-option>
-      <mat-option value="opcion2">Opción 2</mat-option>
-      <mat-option value="opcion3">Opción 3</mat-option>
+    <label><b>Buscar inmueble:</b></label>
+    <mat-select class="filter-select" placeholder="Inmueble">
+      <mat-option value="opcion1">Apartamento</mat-option>
+      <mat-option value="opcion2">Casa</mat-option>
     </mat-select>
-    <mat-select class="filter-select" placeholder="Filtro 2">
-      <mat-option value="opcion1">Opción 1</mat-option>
-      <mat-option value="opcion2">Opción 2</mat-option>
-      <mat-option value="opcion3">Opción 3</mat-option>
+    <mat-select class="filter-select" placeholder="Ciudad">
+      <mat-option value="opcion1">Bogotá</mat-option>
+      <mat-option value="opcion2">Medellin</mat-option>
+      <mat-option value="opcion3">Cali</mat-option>
     </mat-select>
-    <mat-select class="filter-select" placeholder="Filtro 3">
-      <mat-option value="opcion1">Opción 1</mat-option>
-      <mat-option value="opcion2">Opción 2</mat-option>
-      <mat-option value="opcion3">Opción 3</mat-option>
+    <mat-select class="filter-select" placeholder="Habitaciones">
+      <mat-option value="opcion1">1</mat-option>
+      <mat-option value="opcion2">2</mat-option>
+      <mat-option value="opcion3">3</mat-option>
     </mat-select>
+    <mat-icon class="add" matTooltip="Agregar inmueble" matTooltipPosition="right">add_circle</mat-icon>
   </div>
   <mat-divider></mat-divider>
-  
+  <div class="property-list">
+    <div class="property-card" *ngFor="let inmueble of listInmuebles">
+      <img [src]="inmueble.imagen" alt="Imagen del inmueble" class="property-image">
+      <div class="property-details">
+        <h3 class="property-name">{{inmueble.nombre}}</h3>
+        <p class="property-type"><b>Tipo inmueble:</b> {{inmueble.tipo_inmueble}}</p>
+        <p class="property-location"><b>Ubicación:</b> {{inmueble.ciudad}}</p>
+        <p class="property-rooms"><b>Habitaciones:</b> {{inmueble.habitaciones}}</p>
+        <p class="property-contact"><mat-icon [matTooltip]="inmueble.telefono"> phone_android</mat-icon><mat-icon [matTooltip]="inmueble.correo" style="margin-left: 5px;"> mail</mat-icon></p>
+      </div>
+    </div>
+  </div>
 </div>
