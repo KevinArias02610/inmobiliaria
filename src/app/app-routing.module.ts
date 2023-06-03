@@ -8,7 +8,8 @@ const routes: Routes = [
   {
     path: 'inmobiliaria',
     loadChildren: () => import('./components/children.module').then((m) => m.ChildrenModule),
-  }
+  },
+  { path: '**', redirectTo: 'login' },
 ];
 
 @NgModule({
