@@ -28,7 +28,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.ngxLoader.stop();
-    this.getInmuebles()
+    this.getInmuebles();
+    localStorage.removeItem('isLogin')
   }
 
   singOut(){
@@ -78,4 +79,8 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  editProduct(id: number){
+    this.ngxLoader.start()
+    this.router.navigate(['/inmobiliaria/edit', id])
+  }
 }

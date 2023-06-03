@@ -1,39 +1,30 @@
-<nav class="navbar">
-  <div class="navbar-left">
-    <h1 class="navbar-title">Inmobiliaria Areandina</h1>
-  </div>
-  <div class="navbar-right">
-    <button class="logout-button" (click)="singOut()">Salir</button>
-  </div>  
-</nav>
-<div class="content">
-  <div class="search-filters">
-    <label><b>Buscar inmueble:</b></label>
-    <mat-select class="filter-select" [formControl]="selectedOption" (selectionChange)="onSelectionChange('inmueble', $event)" placeholder="Tipo Inmueble">
-      <mat-option *ngFor="let inmueble of listTipoInmueble" [value]="inmueble">{{inmueble}}</mat-option>
-    </mat-select>
-    <mat-select class="filter-select" [formControl]="selectedOption2" (selectionChange)="onSelectionChange('ciudad', $event)"  placeholder="Ciudad">
-      <mat-option *ngFor="let ciudad of listCiudades" [value]="ciudad">{{ciudad}}</mat-option>
-    </mat-select>
-    <mat-select class="filter-select" [formControl]="selectedOption3" (selectionChange)="onSelectionChange('habitaciones', $event)"  placeholder="Habitaciones">
-      <mat-option *ngFor="let habitacion of listHabitaciones" [value]="habitacion">{{habitacion}}</mat-option>
-    </mat-select>
-    <mat-icon class="add" matTooltip="Agregar inmueble" matTooltipPosition="right">add_circle</mat-icon>
-  </div>
-  <mat-divider></mat-divider>
-  <div class="property-list">
-    <mat-card class="property-card" *ngFor="let inmueble of listInmuebles">
-      <img [src]="inmueble.imagen" alt="Imagen del inmueble" class="property-image">
-      <mat-card-content class="property-details">
-        <h3 class="property-name">{{inmueble.nombre}}</h3>
-        <p class="property-type"><b>Tipo inmueble:</b> {{inmueble.tipo_inmueble}}</p>
-        <p class="property-location"><b>Ubicación:</b> {{inmueble.ciudad}}</p>
-        <p class="property-rooms"><b>Habitaciones:</b> {{inmueble.habitaciones}}</p>
-        <p class="property-contact">
-          <mat-icon [matTooltip]="inmueble.telefono">phone_android</mat-icon>
-          <mat-icon [matTooltip]="inmueble.correo" style="margin-left: 5px;">mail</mat-icon>
-        </p>
-      </mat-card-content>
-    </mat-card>
-  </div>
+<div class="search-filters">
+  <label><b>Buscar inmueble:</b></label>
+  <mat-select class="filter-select" [formControl]="selectedOption" (selectionChange)="onSelectionChange('inmueble', $event)" placeholder="Tipo Inmueble">
+    <mat-option *ngFor="let inmueble of listTipoInmueble" [value]="inmueble">{{inmueble}}</mat-option>
+  </mat-select>
+  <mat-select class="filter-select" [formControl]="selectedOption2" (selectionChange)="onSelectionChange('ciudad', $event)"  placeholder="Ciudad">
+    <mat-option *ngFor="let ciudad of listCiudades" [value]="ciudad">{{ciudad}}</mat-option>
+  </mat-select>
+  <mat-select class="filter-select" [formControl]="selectedOption3" (selectionChange)="onSelectionChange('habitaciones', $event)"  placeholder="Habitaciones">
+    <mat-option *ngFor="let habitacion of listHabitaciones" [value]="habitacion">{{habitacion}}</mat-option>
+  </mat-select>
+  <mat-icon class="add" matTooltip="Agregar inmueble" matTooltipPosition="right">add_circle</mat-icon>
+</div>
+<mat-divider></mat-divider>
+<div class="property-list">
+  <mat-card class="property-card" *ngFor="let inmueble of listInmuebles">
+    <img [src]="inmueble.imagen" alt="Imagen del inmueble" class="property-image">
+    <mat-card-content class="property-details">
+      <h3 class="property-name">{{inmueble.nombre}}</h3>
+      <p class="property-type"><b>Tipo inmueble:</b> {{inmueble.tipo_inmueble}}</p>
+      <p class="property-location"><b>Ubicación:</b> {{inmueble.ciudad}}</p>
+      <p class="property-rooms"><b>Habitaciones:</b> {{inmueble.habitaciones}}</p>
+      <p class="property-contact">
+        <mat-icon [matTooltip]="inmueble.telefono">phone_android</mat-icon>
+        <mat-icon [matTooltip]="inmueble.correo" style="margin-left: 5px;">mail</mat-icon>
+        <mat-icon (click)="editProduct(inmueble.id)" matTooltip="Editar inmueble" style="margin-left: 5px;">edit</mat-icon>
+      </p>
+    </mat-card-content>
+  </mat-card>
 </div>

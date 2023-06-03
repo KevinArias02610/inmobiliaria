@@ -1,0 +1,186 @@
+.navbar {
+    background-color: #ff3d00;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-title {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .content {
+    padding: 20px;
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logout-button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+  }
+  
+  .logout-button:hover {
+    text-decoration: underline;
+  }
+  
+  .search-filters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  
+  }
+  
+  .search-input {
+    width: 200px;
+    height: 40px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 0 10px 10px 0;
+  }
+  
+  .filter-select {
+    width: 150px;
+    margin: 10px 10px 10px 20px;
+  }
+  .filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    justify-content: center; /* Centrar las filas de inmuebles */
+  }
+  
+  .search-input {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 10px;
+  }
+  
+  .filter-select {
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .filters-container {
+      flex-direction: column;
+    }
+  
+    .filter-input,
+    .filter-select {
+      max-width: 100%;
+    }
+  }
+  
+  .property-list {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .property-card {
+    width: calc(33.33% - 10px); /* Ajusta el ancho según tus necesidades */
+    margin-bottom: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .property-card {
+      width: calc(50% - 10px); /* Cambia a 2 inmuebles por fila en pantallas más pequeñas */
+    }
+  }
+  
+  .property-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .property-details {
+    padding: 10px;
+  }
+  
+  .property-name {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .property-type,
+  .property-address,
+  .property-location,
+  .property-rooms,
+  .property-contact,
+  .property-email {
+    margin-bottom: 5px;
+  }
+  
+  /* Estilos para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .property-card {
+      width: 100%;
+    }
+  }
+  mat-icon{
+    cursor: pointer;
+  }
+  .add{
+    margin-left: 20px;
+  }
+  .property-card {
+    width: 300px; /* Ajusta el ancho de la tarjeta según tus necesidades */
+    margin: 10px; /* Agrega un margen entre las tarjetas */
+  }
+  
+  .property-details {
+    padding: 16px; /* Agrega un espacio interno al contenido de la tarjeta */
+  }
+  
+  .property-name {
+    font-size: 18px; /* Tamaño de fuente para el nombre del inmueble */
+    margin-bottom: 8px; /* Agrega un espacio inferior al nombre del inmueble */
+  }
+  
+  .property-type,
+  .property-location,
+  .property-rooms {
+    margin-bottom: 4px; /* Agrega un espacio inferior a los detalles del inmueble */
+  }
+  
+  .property-contact {
+    display: flex; /* Muestra el ícono y el texto en una línea */
+    align-items: center; /* Centra verticalmente el contenido */
+  }
+  
+  .property-contact mat-icon {
+    margin-right: 5px; /* Agrega un espacio a la derecha del ícono */
+  }
+  

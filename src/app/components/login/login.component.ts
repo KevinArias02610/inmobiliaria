@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     localStorage.clear();
     this.ngxLoader.stop();
+    localStorage.setItem('isLogin', 'true')
   }
 
   redirect() {

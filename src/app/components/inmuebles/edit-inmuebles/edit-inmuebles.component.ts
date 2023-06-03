@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-edit-inmuebles',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditInmueblesComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private ngxLoader: NgxUiLoaderService,
+    private router: Router,
+    private api: ApiService
+  ) { }
 
   ngOnInit(): void {
+    this.ngxLoader.stop()
   }
 
 }
