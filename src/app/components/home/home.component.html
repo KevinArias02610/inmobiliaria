@@ -9,19 +9,14 @@
 <div class="content">
   <div class="search-filters">
     <label><b>Buscar inmueble:</b></label>
-    <mat-select class="filter-select" placeholder="Inmueble">
-      <mat-option value="opcion1">Apartamento</mat-option>
-      <mat-option value="opcion2">Casa</mat-option>
+    <mat-select class="filter-select" [formControl]="selectedOption" (selectionChange)="onSelectionChange('inmueble', $event)" placeholder="Tipo Inmueble">
+      <mat-option *ngFor="let inmueble of listTipoInmueble" [value]="inmueble">{{inmueble}}</mat-option>
     </mat-select>
-    <mat-select class="filter-select" placeholder="Ciudad">
-      <mat-option value="opcion1">Bogotá</mat-option>
-      <mat-option value="opcion2">Medellin</mat-option>
-      <mat-option value="opcion3">Cali</mat-option>
+    <mat-select class="filter-select" [formControl]="selectedOption2" (selectionChange)="onSelectionChange('ciudad', $event)"  placeholder="Ciudad">
+      <mat-option *ngFor="let ciudad of listCiudades" [value]="ciudad">{{ciudad}}</mat-option>
     </mat-select>
-    <mat-select class="filter-select" placeholder="Habitaciones">
-      <mat-option value="opcion1">1</mat-option>
-      <mat-option value="opcion2">2</mat-option>
-      <mat-option value="opcion3">3</mat-option>
+    <mat-select class="filter-select" [formControl]="selectedOption3" (selectionChange)="onSelectionChange('habitaciones', $event)"  placeholder="Habitaciones">
+      <mat-option *ngFor="let habitacion of listHabitaciones" [value]="habitacion">{{habitacion}}</mat-option>
     </mat-select>
     <mat-icon class="add" matTooltip="Agregar inmueble" matTooltipPosition="right">add_circle</mat-icon>
   </div>

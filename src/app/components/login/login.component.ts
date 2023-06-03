@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ApiService } from '../services/api.service';
 import { Usuario } from '../interfaces/usarios.interface';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
     private api: ApiService
   ) {
     this.formulario = new FormGroup({
-      usuario: new FormControl(''),
-      contrasena: new FormControl(''),
+      usuario: new FormControl('', Validators.required),
+      contrasena: new FormControl('', Validators.required),
     });
   }
 

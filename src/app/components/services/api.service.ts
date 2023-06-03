@@ -17,4 +17,8 @@ export class ApiService {
   getUusarios(){
     return this.http.get<Usuario[]>('https://areandinaeje4.herokuapp.com/usuarios');
   }
+
+  getInmueblesByParam(params: string){
+    return this.http.get<Inmuebles[]>(`https://areandinaeje4.herokuapp.com/inmuebles${params}`);
+  }
 }
