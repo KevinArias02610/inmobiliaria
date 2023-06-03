@@ -117,11 +117,9 @@
   }
 }
 
-
-
 .property-image {
   width: 100%;
-  max-width: 200px;
+  max-width: 400px;
   height: auto;
   object-fit: cover;
   margin-bottom: 10px;
@@ -156,4 +154,32 @@ mat-icon{
 }
 .add{
   margin-left: 20px;
+}
+.property-card {
+  width: 300px; /* Ajusta el ancho de la tarjeta según tus necesidades */
+  margin: 10px; /* Agrega un margen entre las tarjetas */
+}
+
+.property-details {
+  padding: 16px; /* Agrega un espacio interno al contenido de la tarjeta */
+}
+
+.property-name {
+  font-size: 18px; /* Tamaño de fuente para el nombre del inmueble */
+  margin-bottom: 8px; /* Agrega un espacio inferior al nombre del inmueble */
+}
+
+.property-type,
+.property-location,
+.property-rooms {
+  margin-bottom: 4px; /* Agrega un espacio inferior a los detalles del inmueble */
+}
+
+.property-contact {
+  display: flex; /* Muestra el ícono y el texto en una línea */
+  align-items: center; /* Centra verticalmente el contenido */
+}
+
+.property-contact mat-icon {
+  margin-right: 5px; /* Agrega un espacio a la derecha del ícono */
 }

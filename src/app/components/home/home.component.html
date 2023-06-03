@@ -22,15 +22,18 @@
   </div>
   <mat-divider></mat-divider>
   <div class="property-list">
-    <div class="property-card" *ngFor="let inmueble of listInmuebles">
+    <mat-card class="property-card" *ngFor="let inmueble of listInmuebles">
       <img [src]="inmueble.imagen" alt="Imagen del inmueble" class="property-image">
-      <div class="property-details">
+      <mat-card-content class="property-details">
         <h3 class="property-name">{{inmueble.nombre}}</h3>
         <p class="property-type"><b>Tipo inmueble:</b> {{inmueble.tipo_inmueble}}</p>
         <p class="property-location"><b>Ubicación:</b> {{inmueble.ciudad}}</p>
         <p class="property-rooms"><b>Habitaciones:</b> {{inmueble.habitaciones}}</p>
-        <p class="property-contact"><mat-icon [matTooltip]="inmueble.telefono"> phone_android</mat-icon><mat-icon [matTooltip]="inmueble.correo" style="margin-left: 5px;"> mail</mat-icon></p>
-      </div>
-    </div>
+        <p class="property-contact">
+          <mat-icon [matTooltip]="inmueble.telefono">phone_android</mat-icon>
+          <mat-icon [matTooltip]="inmueble.correo" style="margin-left: 5px;">mail</mat-icon>
+        </p>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>
