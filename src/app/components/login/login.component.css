@@ -194,4 +194,18 @@ body {
     }
 }
 
-/* Resto de los estilos para el contenido de la página */
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f2f2f24f;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}

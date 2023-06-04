@@ -27,6 +27,8 @@ export class NavbarComponent implements OnInit {
 
   redirect() {
     this.ngxLoader.start();
-    this.router.navigate(['/inmobiliaria/home']);
+    this.router.navigate(['/inmobiliaria/home']).then(()=>{
+      this.ngxLoader.stop()
+    });
   }
 }
