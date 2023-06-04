@@ -6,24 +6,27 @@ import { ApiService } from '../services/api.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-
   constructor(
     private ngxLoader: NgxUiLoaderService,
     private router: Router,
     private api: ApiService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.ngxLoader.stop();
-    localStorage.removeItem('isLogin')
+    localStorage.removeItem('isLogin');
   }
 
-  singOut(){
+  singOut() {
     this.ngxLoader.start();
     this.router.navigate(['/login']);
   }
 
+  redirect() {
+    this.ngxLoader.start();
+    this.router.navigate(['/inmobiliaria/home']);
+  }
 }

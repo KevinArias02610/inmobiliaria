@@ -1,1 +1,62 @@
-<p>edit-inmuebles works!</p>
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form-grid">
+    <div class="form-column">
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre" placeholder="Nombre del inmueble">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Tipo de inmueble</mat-label>
+            <mat-select formControlName="tipo_inmueble" class="filter-select" placeholder="Inmueble">
+                <mat-option *ngFor="let inmueble of listTipoInmueble" [value]="inmueble">{{inmueble}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Ciudad</mat-label>
+            <mat-select formControlName="ciudad" class="filter-select" placeholder="Ciudad">
+                <mat-option *ngFor="let ciudad of listCiudades" [value]="ciudad">{{ciudad}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Habitaciones</mat-label>
+            <mat-select formControlName="habitaciones" class="filter-select" placeholder="Habitaciones">
+                <mat-option *ngFor="let habitaciones of listHabitaciones" [value]="habitaciones">{{habitaciones}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Precio</mat-label>
+            <input matInput formControlName="precio" maxlength="12" (keydown)="onlyNumbers($event)">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Teléfono</mat-label>
+            <input matInput maxlength="12" formControlName="telefono">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Correo electrónico</mat-label>
+            <input matInput formControlName="correo" type="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Imagen</mat-label>
+            <input matInput formControlName="imagen">
+        </mat-form-field>
+    </div>
+
+    <div class="image-column">
+        <mat-card class="image-card">
+            <mat-card-header>
+                <mat-card-title>Imagen del inmueble</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <img [src]="editForm.get('imagen')!.value" alt="Imagen del inmueble" class="image-preview">
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <button mat-raised-button color="primary" [disabled]="!editForm.valid" type="submit">Guardar cambios <mat-icon>save</mat-icon></button>
+</form>
+<br>

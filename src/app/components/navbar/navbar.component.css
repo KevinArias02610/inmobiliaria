@@ -183,4 +183,7 @@
   .property-contact mat-icon {
     margin-right: 5px; /* Agrega un espacio a la derecha del ícono */
   }
-  
+  mat-icon{
+    color: white;
+    cursor: pointer;
+  }

@@ -83,4 +83,9 @@ export class HomeComponent implements OnInit {
     this.ngxLoader.start()
     this.router.navigate(['/inmobiliaria/edit', id])
   }
+
+  createProduct(){
+    this.ngxLoader.start()
+    this.router.navigate(['/inmobiliaria/create'])
+  }
 }

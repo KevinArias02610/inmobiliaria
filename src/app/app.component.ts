@@ -8,12 +8,9 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  public isLogin: boolean = false;
 
-  constructor(private ngxService: NgxUiLoaderService, private router: Router) {}
+  constructor() {}
 
   ngOnInit(): void {
-    let isLogin = localStorage.getItem('isLogin')
-    this.isLogin = isLogin == 'true' ? true : false;
   }
 }

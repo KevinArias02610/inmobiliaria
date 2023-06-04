@@ -9,7 +9,7 @@
   <mat-select class="filter-select" [formControl]="selectedOption3" (selectionChange)="onSelectionChange('habitaciones', $event)"  placeholder="Habitaciones">
     <mat-option *ngFor="let habitacion of listHabitaciones" [value]="habitacion">{{habitacion}}</mat-option>
   </mat-select>
-  <mat-icon class="add" matTooltip="Agregar inmueble" matTooltipPosition="right">add_circle</mat-icon>
+  <mat-icon class="add" matTooltip="Agregar inmueble" (click)="createProduct()" matTooltipPosition="right">add_circle</mat-icon>
 </div>
 <mat-divider></mat-divider>
 <div class="property-list">
@@ -20,6 +20,7 @@
       <p class="property-type"><b>Tipo inmueble:</b> {{inmueble.tipo_inmueble}}</p>
       <p class="property-location"><b>Ubicación:</b> {{inmueble.ciudad}}</p>
       <p class="property-rooms"><b>Habitaciones:</b> {{inmueble.habitaciones}}</p>
+      <p class="property-rooms"><b>Precio:</b> ${{inmueble.precio | number}}</p>
       <p class="property-contact">
         <mat-icon [matTooltip]="inmueble.telefono">phone_android</mat-icon>
         <mat-icon [matTooltip]="inmueble.correo" style="margin-left: 5px;">mail</mat-icon>
