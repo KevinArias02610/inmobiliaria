@@ -27,10 +27,27 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
+            <mat-label>Disponible</mat-label>
+            <mat-select formControlName="disponible" class="filter-select" placeholder="Disponible">
+                <mat-option *ngFor="let disponible of listDisponible" [value]="disponible">{{disponible}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
             <mat-label>Precio</mat-label>
             <input matInput formControlName="precio" maxlength="12" (keydown)="onlyNumbers($event)">
         </mat-form-field>
 
+        <mat-form-field appearance="outline">
+            <mat-label>Propietario</mat-label>
+            <input matInput formControlName="propietario">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Inquilino</mat-label>
+            <input matInput formControlName="inquilino">
+        </mat-form-field>
+        
         <mat-form-field appearance="outline">
             <mat-label>Teléfono</mat-label>
             <input matInput maxlength="12" formControlName="telefono">

@@ -8,4 +8,8 @@ export interface Inmuebles {
     telefono:      string;
     correo:        string;
     imagen:        string;
+    disponible:        string;
+    propietario:        string;
+    inquilino:        string;
+
 }

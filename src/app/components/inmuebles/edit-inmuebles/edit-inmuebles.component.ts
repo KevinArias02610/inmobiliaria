@@ -18,6 +18,7 @@ export class EditInmueblesComponent implements OnInit {
   public listCiudades: string[] = [];
   public listHabitaciones: number[] = [];
   public listTipoInmueble: string[] = [];
+  public listDisponible: string[] = [];
 
   constructor(
     private ngxLoader: NgxUiLoaderService,
@@ -36,6 +37,9 @@ export class EditInmueblesComponent implements OnInit {
       ciudad: ['', Validators.required],
       habitaciones: ['', Validators.required],
       precio: ['', Validators.required],
+      disponible: ['', Validators.required],
+      propietario: ['', Validators.required],
+      inquilino: ['', Validators.required],
       telefono: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],
       imagen: ['', Validators.required]
@@ -82,6 +86,9 @@ export class EditInmueblesComponent implements OnInit {
         habitaciones: resp.habitaciones,
         precio: resp.precio,
         telefono: resp.telefono,
+        disponible: resp.disponible,
+        propietario: resp.propietario,
+        inquilino: resp.inquilino,
         correo: resp.correo,
         imagen: resp.imagen
       });
@@ -104,6 +111,7 @@ export class EditInmueblesComponent implements OnInit {
         this.listCiudades.push(element.ciudad);
         this.listHabitaciones.push(element.habitaciones);
         this.listTipoInmueble.push(element.tipo_inmueble);
+        this.listDisponible.push(element.disponible)
       });
       this.listCiudades = this.listCiudades.filter((value, index, self) => {
         return self.indexOf(value) === index;
@@ -112,6 +120,9 @@ export class EditInmueblesComponent implements OnInit {
         return self.indexOf(value) === index;
       });
       this.listTipoInmueble = this.listTipoInmueble.filter((value, index, self) => {
+        return self.indexOf(value) === index;
+      });
+      this.listDisponible = this.listDisponible.filter((value, index, self) => {
         return self.indexOf(value) === index;
       });
     })

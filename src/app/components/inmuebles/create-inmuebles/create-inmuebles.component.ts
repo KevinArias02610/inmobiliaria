@@ -16,6 +16,7 @@ export class CreateInmueblesComponent implements OnInit {
   public listCiudades: string[] = [];
   public listHabitaciones: number[] = [];
   public listTipoInmueble: string[] = [];
+  public listDisponible: string[] = [];
   public idMax: number = 0;
 
   constructor(
@@ -34,6 +35,9 @@ export class CreateInmueblesComponent implements OnInit {
       ciudad: ['', Validators.required],
       habitaciones: ['', Validators.required],
       precio: ['', Validators.required],
+      disponible: ['', Validators.required],
+      propietario: ['', Validators.required],
+      inquilino: ['', Validators.required],
       telefono: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],
       imagen: ['', Validators.required]
@@ -83,6 +87,7 @@ export class CreateInmueblesComponent implements OnInit {
         this.listCiudades.push(element.ciudad);
         this.listHabitaciones.push(element.habitaciones);
         this.listTipoInmueble.push(element.tipo_inmueble);
+        this.listDisponible.push(element.disponible)
         max.push(element.id);
       });
       this.listCiudades = this.listCiudades.filter((value, index, self) => {
@@ -92,6 +97,9 @@ export class CreateInmueblesComponent implements OnInit {
         return self.indexOf(value) === index;
       });
       this.listTipoInmueble = this.listTipoInmueble.filter((value, index, self) => {
+        return self.indexOf(value) === index;
+      });
+      this.listDisponible = this.listDisponible.filter((value, index, self) => {
         return self.indexOf(value) === index;
       });
       this.idMax = Math.max(...max);
