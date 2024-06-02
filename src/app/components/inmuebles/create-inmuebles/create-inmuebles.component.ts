@@ -18,6 +18,8 @@ export class CreateInmueblesComponent implements OnInit {
   public listHabitaciones: number[] = [];
   public listTipoInmueble: string[] = [];
   public listDisponible: string[] = [];
+  public inmueble!: Inmuebles;
+  public inmuebles!: Inmuebles[];
   public idMax: number = 0;
 
   constructor(
@@ -50,9 +52,14 @@ export class CreateInmueblesComponent implements OnInit {
     this.ngxLoader.start();
     if (this.createForm.valid) {
       if(this.createForm.get('imagen')!.value.includes('jpg') || this.createForm.get('imagen')!.value.includes('png')){
+
+        debugger
         this.createForm.value.habitaciones = parseInt(this.createForm.value.habitaciones);
         this.createForm.value.precio = parseInt(this.createForm.value.precio);
-        this.api.createInmueble(this.createForm.value).subscribe(() =>{
+        this.inmuebles.push(this.createForm.value);
+        this.api.updateInmueble(JSON.stringify(this.inmuebles)).subscribe((resp: any) =>{
+          debugger
+          console.log(resp);
           Swal.fire(
             '',
             `<b>Inmueble creado correctamente.</b>`,
@@ -61,7 +68,7 @@ export class CreateInmueblesComponent implements OnInit {
           this.router.navigate(['/inmobiliaria/home']).then(()=>{
             this.ngxLoader.stop();
           });
-        })
+      });
       }else{
         this.ngxLoader.stop();
         Swal.fire(
@@ -84,6 +91,7 @@ export class CreateInmueblesComponent implements OnInit {
   getInmuebles(){
     let max: number[] = [];
     this.api.getInmuebles().subscribe((resp: InmueblesResponse) => {
+      this.inmuebles = resp.data;
       resp.data.forEach((element: Inmuebles) => {
         this.listCiudades.push(element.ciudad);
         this.listHabitaciones.push(element.habitaciones);

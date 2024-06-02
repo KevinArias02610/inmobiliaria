@@ -42,25 +42,4 @@ export class ApiService {
     return this.http.put(`${this.apiUrl}${this.recordInmueblesId}`, body.toString(), { headers });
   }
 
-  //API Heroku (Deprecated)
-
-  getUusarios(){
-    return this.http.get<Usuario[]>('https://areandinaeje4.herokuapp.com/usuarios');
-  }
-
-  getInmueblesByParam(params: string){
-    return this.http.get<Inmuebles[]>(`https://areandinaeje4.herokuapp.com/inmuebles${params}`);
-  }
-
-  getInmueblesById(params: string){
-    return this.http.get<Inmuebles>(`https://areandinaeje4.herokuapp.com/inmuebles${params}`);
-  }
-
-  editInmueble(inmueble: Inmuebles){
-    return this.http.put<Inmuebles>(`https://areandinaeje4.herokuapp.com/inmuebles/${inmueble.id}`, inmueble);
-  }
-
-  createInmueble(inmueble: Inmuebles){
-    return this.http.post<Inmuebles>(`https://areandinaeje4.herokuapp.com/inmuebles`, inmueble);
-  }
 }
