@@ -5,6 +5,7 @@ import { ApiService } from '../services/api.service';
 import { Usuario } from '../interfaces/usarios.interface';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2'
+import { ApiResponse } from '../interfaces/ApiResponse';
 
 @Component({
   selector: 'app-login',
@@ -36,8 +37,9 @@ export class LoginComponent implements OnInit {
   redirect() {
     this.ngxLoader.start();
     let redirect = false;
-    this.api.getUusarios().subscribe((resp: Usuario[]) => {
-      resp.forEach((element: Usuario) => {
+    this.api.getUsers().subscribe((resp: ApiResponse) => {
+      resp.data.forEach((element: Usuario) => {
+        console.log(element)
         if (
           element.usuario == this.formulario.value.usuario &&
           element.contrasena == this.formulario.value.contrasena
