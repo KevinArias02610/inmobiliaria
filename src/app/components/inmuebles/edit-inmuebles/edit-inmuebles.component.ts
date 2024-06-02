@@ -62,7 +62,7 @@ export class EditInmueblesComponent implements OnInit {
         this.editForm.value.precio = parseInt(this.editForm.value.precio);
 
         this.inmueble = this.editForm.value;
-        const index = this.inmuebles.findIndex(inmueble => inmueble.id === inmueble.id);
+        const index = this.inmuebles.findIndex(inmueble => inmueble.id === this.inmueble.id);
         if (index !== -1) {
           this.inmuebles[index] = this.inmueble;
         }
@@ -91,6 +91,7 @@ export class EditInmueblesComponent implements OnInit {
   }
 
   getInmueble(id: string){
+    debugger
     this.api.getInmuebles().subscribe((resp: InmueblesResponse) => {
       this.inmueble = resp.data.find(inmueble => inmueble.id.toString() === id)!;
       console.log(this.inmueble);
