@@ -5,6 +5,7 @@ import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Inmuebles } from '../../interfaces/inmuebles.interface';
+import { InmueblesResponse } from '../../interfaces/ApiResponse';
 
 @Component({
   selector: 'app-create-inmuebles',
@@ -82,8 +83,8 @@ export class CreateInmueblesComponent implements OnInit {
 
   getInmuebles(){
     let max: number[] = [];
-    this.api.getInmuebles().subscribe((resp: Inmuebles[]) => {
-      resp.forEach(element => {
+    this.api.getInmuebles().subscribe((resp: InmueblesResponse) => {
+      resp.data.forEach((element: Inmuebles) => {
         this.listCiudades.push(element.ciudad);
         this.listHabitaciones.push(element.habitaciones);
         this.listTipoInmueble.push(element.tipo_inmueble);
@@ -107,6 +108,7 @@ export class CreateInmueblesComponent implements OnInit {
         id: this.idMax + 1
       });
     })
+
   }
 
   onlyNumbers(event: any) {

@@ -5,6 +5,7 @@ import { ApiService } from '../../services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Inmuebles } from '../../interfaces/inmuebles.interface';
 import Swal from 'sweetalert2';
+import { InmueblesResponse } from '../../interfaces/ApiResponse';
 
 @Component({
   selector: 'app-edit-inmuebles',
@@ -19,6 +20,8 @@ export class EditInmueblesComponent implements OnInit {
   public listHabitaciones: number[] = [];
   public listTipoInmueble: string[] = [];
   public listDisponible: string[] = [];
+  public inmueble!: Inmuebles;
+  public inmuebles!: Inmuebles[];
 
   constructor(
     private ngxLoader: NgxUiLoaderService,
@@ -52,19 +55,31 @@ export class EditInmueblesComponent implements OnInit {
   onSubmit() {
     this.ngxLoader.start();
     if (this.editForm.valid) {
+      debugger
       if(this.editForm.get('imagen')!.value.includes('jpg') || this.editForm.get('imagen')!.value.includes('png')){
+
         this.editForm.value.habitaciones = parseInt(this.editForm.value.habitaciones);
         this.editForm.value.precio = parseInt(this.editForm.value.precio);
-        this.api.editInmueble(this.editForm.value).subscribe((resp: any) =>{
-          Swal.fire(
-            '',
-            `<b>Inmueble editado correctamente.</b>`,
-            'success'
-          );
-          this.router.navigate(['/inmobiliaria/home']).then(()=>{
-            this.ngxLoader.stop();
-          });
-        })
+
+        this.inmueble = this.editForm.value;
+        const index = this.inmuebles.findIndex(inmueble => inmueble.id === inmueble.id);
+        if (index !== -1) {
+          this.inmuebles[index] = this.inmueble;
+        }
+
+        this.api.updateInmueble(JSON.stringify(this.inmuebles)).subscribe((resp: any) =>{
+            debugger
+            console.log(resp);
+            Swal.fire(
+              '',
+              `<b>Inmueble editado correctamente.</b>`,
+              'success'
+            );
+            this.router.navigate(['/inmobiliaria/home']).then(()=>{
+              this.ngxLoader.stop();
+            });
+        });
+
       }else{
         Swal.fire(
           '',
@@ -76,21 +91,22 @@ export class EditInmueblesComponent implements OnInit {
   }
 
   getInmueble(id: string){
-    const param = `/${id}`
-    this.api.getInmueblesById(param).subscribe((resp: Inmuebles) => {
+    this.api.getInmuebles().subscribe((resp: InmueblesResponse) => {
+      this.inmueble = resp.data.find(inmueble => inmueble.id.toString() === id)!;
+      console.log(this.inmueble);
       this.editForm.patchValue({
-        id: resp.id,
-        nombre: resp.nombre,
-        tipo_inmueble: resp.tipo_inmueble,
-        ciudad: resp.ciudad,
-        habitaciones: resp.habitaciones,
-        precio: resp.precio,
-        telefono: resp.telefono,
-        disponible: resp.disponible,
-        propietario: resp.propietario,
-        inquilino: resp.inquilino,
-        correo: resp.correo,
-        imagen: resp.imagen
+        id: this.inmueble.id,
+        nombre: this.inmueble.nombre,
+        tipo_inmueble: this.inmueble.tipo_inmueble,
+        ciudad: this.inmueble.ciudad,
+        habitaciones: this.inmueble.habitaciones,
+        precio: this.inmueble.precio,
+        telefono: this.inmueble.telefono,
+        disponible: this.inmueble.disponible,
+        propietario: this.inmueble.propietario,
+        inquilino: this.inmueble.inquilino,
+        correo: this.inmueble.correo,
+        imagen: this.inmueble.imagen
       });
     })
   };
@@ -106,8 +122,9 @@ export class EditInmueblesComponent implements OnInit {
   }
   
   getInmuebles(){
-    this.api.getInmuebles().subscribe((resp: Inmuebles[]) => {
-      resp.forEach(element => {
+    this.api.getInmuebles().subscribe((resp: InmueblesResponse) => {
+      this.inmuebles = resp.data;
+      resp.data.forEach((element: Inmuebles) => {
         this.listCiudades.push(element.ciudad);
         this.listHabitaciones.push(element.habitaciones);
         this.listTipoInmueble.push(element.tipo_inmueble);
@@ -126,6 +143,7 @@ export class EditInmueblesComponent implements OnInit {
         return self.indexOf(value) === index;
       });
     })
+    
   }
   
 

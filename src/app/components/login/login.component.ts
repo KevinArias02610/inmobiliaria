@@ -5,7 +5,7 @@ import { ApiService } from '../services/api.service';
 import { Usuario } from '../interfaces/usarios.interface';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2'
-import { ApiResponse } from '../interfaces/ApiResponse';
+import { UsersResponse } from '../interfaces/ApiResponse';
 
 @Component({
   selector: 'app-login',
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   redirect() {
     this.ngxLoader.start();
     let redirect = false;
-    this.api.getUsers().subscribe((resp: ApiResponse) => {
+    this.api.getUsers().subscribe((resp: UsersResponse) => {
       resp.data.forEach((element: Usuario) => {
         console.log(element)
         if (
